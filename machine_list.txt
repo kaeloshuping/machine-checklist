@@ -1,0 +1,51 @@
+
+------------------------------------------------------------------------------------------------------------------------
+Program description
+
+Write a program that uses data from an excel spreadsheet, which contains meter readings for
+different machine models (Full colour and monochrome), the program should be able to take the
+last 3 digits of the machine serial number and allow you to modify the "CURRENT METER READINGS"
+column and after submitting the modified data, the program should save the previous meter readings
+(before modification) in the "PREVIOUS METER READING" column, once completed, the program should
+calculate the difference between the "CURRENT METER READINGS" and "PREVIOUS METER READINGS" column
+and store the difference in the "DIFFERENCE" column.
+
+The program should as well be able to modify the "COMMENTS" column upon request, should the machine
+condition in the "CONDITION" column be change from "WORKING" to "NOT WORKING"
+
+The program should then update the data in the original excel sheet and saving the excel sheet to ready
+for use in an email.
+------------------------------------------------------------------------------------------------------------------------
+
+Program Mini Challenges
+
+1: Obtain user input containing the machine name or serial number for columns to be modified (DONE)
+
+2: Check whether user input belongs to "colour machines" or "B&W machines" in the case of serial numbers
+    2.1: if serial number belongs to "B&W machines" only 1 user prompt for the "Black" meter reading should
+         be obtained (DONE)
+    2.2: if serial number belongs to "colour machines" then 3 user prompts should be given for the "Total", "Colour",
+         "Black" meter readings respectively (DONE)
+    2.3: prompt user whether they would like to modify any of the other columns ("CONDITION"/"COMMENTS") (DONE)
+
+3: if user input is a machine name (finishing department equipment), prompt whether the user wants to modify the
+   "CONDITION" or "COMMENTS" column
+
+NB!!! IF THE "CONDITION" COLUMN IS MODIFIED, USER NEEDS TO MODIFY THE "COMMENTS" COLUMN UNLESS THE "CONDITION"
+CHANGES FROM "NOT WORKING" TO "WORKING"!!!
+
+4: Retrieve the meter readings in the "CURRENT METER READING", "PREVIOUS METER READING" and "DIFFERENCE" columns and
+   save the column values in a variable in a dictionary format
+
+5: Change the value for "PREVIOUS METER READING" to the value of "CURRENT METER READING"
+
+6: Obtain user input for the new value of "CURRENT METER READING" (3 for colour machines and 1 for B&W machines)
+
+7: Subtract the value of "PREVIOUS METER READING" from "CURRENT METER READING" and substitute the difference with the
+   value saved in the variable containing the "DIFFERENCE" meter reading dictionary
+
+8: Update the respective columns on the Excel sheet with the respective values obtained "CURRENT METER READING",
+   "PREVIOUS METER READING" and "DIFFERENCE"
+
+9: Save and close Excel file.
+
