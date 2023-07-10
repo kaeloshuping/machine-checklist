@@ -3,16 +3,26 @@ import data
 import get_reading
 
 user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
+print(user_input)
 
-if user_input not in data.printers["B&W"] or user_input not in data.printers["COLOUR"]:
+if user_input not in data.printers["B&W"]:
+    print("Invalid input. Please input last 3 digits of printer serial number or finishing equipment name!")
+    user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
+elif user_input not in data.printers["COLOUR"]:
+    print("Invalid input. Please input last 3 digits of printer serial number or finishing equipment name!")
+    user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
+elif user_input not in data.finishing_equipment:
     print("Invalid input. Please input last 3 digits of printer serial number or finishing equipment name!")
     user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
 
-# else:
 
+# else:
 user_input_object = obtain_user_input.GetUserInput(user_input)
 
-new_current_readings = user_input_object.check_machine()
+machine_type = user_input_object.check_machine()
+print(machine_type)
+new_current_readings = obtain_user_input.get_readings(machine_type)
+print(new_current_readings)
 
 excel_readings_object = get_reading.GetReadings(user_input)
 
