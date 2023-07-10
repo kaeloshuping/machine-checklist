@@ -85,8 +85,9 @@ class GetUserInput:
         elif self.selected_machine in data.finishing_equipment:
             return modify_further()
 
-        else:
-            print("Invalid input. Please input last 3 digits of printer serial number or finishing equipment name!")
-            user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
-            GetUserInput(user_input).check_machine()
+        # else:
+        #     print("Invalid input. Please input last 3 digits of printer serial number or finishing equipment name!")
+        #     user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
+        #     user_input_object = self.GetUserInput(user_input)
+        #     new_current_readings = user_input_object.check_machine()
 
