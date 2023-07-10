@@ -4,6 +4,12 @@ import get_reading
 
 user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
 
+if user_input not in data.printers["B&W"] or user_input not in data.printers["COLOUR"]:
+    print("Invalid input. Please input last 3 digits of printer serial number or finishing equipment name!")
+    user_input = input("Please input either the machine name or last 3 digits of Serial Number:\n").upper()
+
+# else:
+
 user_input_object = obtain_user_input.GetUserInput(user_input)
 
 new_current_readings = user_input_object.check_machine()
@@ -24,7 +30,6 @@ if user_input_object.selected_machine in data.printers["B&W"] or user_input_obje
 
 else:
     ask_user = False
-
 
 while ask_user:
     # prompt user on whether they would like to modify the "CONDITION" or "COMMENTS" columns
