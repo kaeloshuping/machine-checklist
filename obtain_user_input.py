@@ -1,23 +1,27 @@
 import data
 
 
-def get_colour_readings():
+def get_readings(machine_type):
     total_reading = int(input("Please input the Total meter reading:\n"))
-    colour_reading = int(input("Please input the Colour meter reading:\n"))
-    black_reading = int(input("Please input the Black meter reading:\n"))
-    colour_readings = {
-        "T": total_reading,
-        "C": colour_reading,
-        "B": black_reading
-    }
-    if colour_reading + black_reading != total_reading:
-        # if the sum does not equal the total, print a statement highlighting the issue
-        print(f"The sum of the Colour Reading: {colour_reading} and Black Reading: {black_reading} "
-              f"does not equal to the Total Reading: {total_reading}!. Please correct!")
+    if machine_type == "B&W":
+        black_reading = total_reading
+        return black_reading
 
-        # request for all meter readings again T,C,B
-        get_colour_readings()
-    return colour_readings
+    else:
+        colour_reading = int(input("Please input the Colour meter reading:\n"))
+        black_reading = int(input("Please input the Black meter reading:\n"))
+        if colour_reading + black_reading != total_reading:
+            # if the sum does not equal the total, print a statement highlighting the issue
+            print(f"The sum of the Colour Reading: {colour_reading} and Black Reading: {black_reading} "
+                  f"does not equal to the Total Reading: {total_reading}!. Please correct!")
+            colour_reading = int(input("Please input the Colour meter reading:\n"))
+            black_reading = int(input("Please input the Black meter reading:\n"))
+        colour_readings = {
+            "T": total_reading,
+            "C": colour_reading,
+            "B": black_reading
+        }
+        return colour_readings
 
 
 # this function prompts the user on whether they would like to modify any of either the "CONDITION" or "COMMENTS"
@@ -72,14 +76,14 @@ class GetUserInput:
         # check whether serial number is in the dictionary for B&W printers
         if self.selected_machine in data.printers["B&W"]:
             # give 1 prompt for the TOTAL meter reading if it is
-            black_reading = int(input("Please input the Total meter reading:\n"))
-            return {"B": black_reading}
+            # black_reading = int(input("Please input the Total meter reading:\n"))
+            return "B&W"
 
         # check whether serial number is in the dictionary for COLOUR printers and
         elif self.selected_machine in data.printers["COLOUR"]:
 
             # give 3 prompts for the TOTAL, COLOUR and B&W meter reading if it is
-            return get_colour_readings()
+            return "COLOUR"
 
         # check whether the machine name is in the list of finishing equipment
         elif self.selected_machine in data.finishing_equipment:
